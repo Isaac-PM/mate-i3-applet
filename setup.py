@@ -8,7 +8,9 @@
 
 from distutils.core import setup
 from distutils.command.install_data import install_data
-
+from setuptools import find_packages
+import os
+setup_path = os.getcwd()
 
 class InstallData(install_data):
     def run(self):
@@ -36,5 +38,6 @@ setup(
         ('/usr/share/dbus-1/services', ['matei3applet.service']),
         ('/usr/share/mate-panel/applets', ['matei3applet.mate-panel-applet']),
     ],
+    package_dir = {"": setup_path},
     cmdclass={'install_data': InstallData}
 )
